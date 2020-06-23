@@ -26,6 +26,10 @@
   @apply bg-blue-600;
 }
 
+.btn-small {
+  @apply bg-blue-400 text-lg text-white font-bold rounded px-2 py-1;
+}
+
 .btn {
   @apply bg-gray-300 rounded p-2;
 }

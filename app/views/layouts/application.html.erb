@@ -13,13 +13,21 @@
   <body>
     <nav class="bg-blue-500 py-4 px-4">
       <p class="inline-block text-2xl text-white font-bold">Facebook</p>
+      <% if user_signed_in? %>
+      <div class="inline-block ml-6">
+        <%= form_with(url: "/search", method: :get, local: true ) do |f| %>
+          <%= f.text_field :q, class: "px-2 py-1 inline-block" %>
+          <%= f.submit "Find friend", class:"btn-small ml-2" %>
+        <% end %>
+      </div>
+      <% end %>
 
       <div class="float-right">
       <% if user_signed_in? %>
         <%= link_to 'Edit Profile', edit_user_registration_path, class: "btn-main inline-block" %>
         <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: "btn inline-block" %>
       <% else %>
-        <%= link_to 'Log in', new_user_session_path, class: "btn-main inline-block" %>
+        <%= link_to 'Log in', new_user_session_path, class: "btn-small inline-block" %>
       <% end %>
       </div>
       
