@@ -1,29 +1,38 @@
-<div class="container mx-auto max-w-sm my-20 p-10 bg-blue-100">
+<div class="container card">
 
-  <h2 class="text-2xl font-bold mb-4">Sign up</h2>
+  <h1 class="title">Sign up</h1>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-
+    <% if resource.errors.any? %>
+      <ul>
+        <% resource.errors.full_messages.each do |msg| %>
+          <li class="error_message">
+            <%= msg %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
     <div class="">
-      <%= f.label :name, class: "label" %>
+      <%= f.label :name, class: "label block" %>
       <%= f.text_field :name, required: true, autofocus: true, class: "input border" %>
 
-      <%= f.label :email, class: "label" %>
+      <%= f.label :email, class: "label block" %>
       <%= f.text_field :email, required: true, class: "input" %>
       
-      <%= f.label :password, class: "label" %>
+      <%= f.label :password, class: "label block" %>
       <%= f.password_field :password, required: true, class: "input" %>
 
-      <%= f.label :password_confirmation, class: "label" %>
+      <%= f.label :password_confirmation, class: "label block" %>
       <%= f.password_field :password_confirmation, required: true, class: "input" %>
 
-      <%= f.label :birthdate, class: "label" %>
-      <%= f.date_field :birthdate, class: "input" %>
+      <%= f.label :birthdate, class: "label block" %>
+      <%= f.date_field :birthdate, required: true, class: "input" %>
 
       <div class="mb-2">
-        <%= f.label :gender_male, "Male", class: "text-lg" %>
+        <%= f.label :gender, "Male", class: "label" %>
         <%= f.radio_button :gender, "Male", class: "mr-2" %>
-        <%= f.label :gender_female, "Female", class: "text-lg" %>
+
+        <%= f.label :gender, "Female", class: "label" %>
         <%= f.radio_button :gender, "Female" %>
       </div>
 
