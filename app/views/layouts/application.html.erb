@@ -12,15 +12,16 @@
 
   <body>
     <nav class="bg-blue-500 py-4 px-4">
-      <div class="inline">
-      <p class="text-2xl text-white font-bold">Facebook</p>
+      <p class="inline-block text-2xl text-white font-bold">Facebook</p>
 
+      <div class="float-right">
       <% if user_signed_in? %>
-        <%= link_to 'Profile', edit_user_registration_path, class: "btn-main" %>
-        <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: "btn" %>
+        <%= link_to 'Edit Profile', edit_user_registration_path, class: "btn-main inline-block" %>
+        <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: "btn inline-block" %>
       <% else %>
-        
+        <%= link_to 'Log in', new_user_session_path, class: "btn-main inline-block" %>
       <% end %>
+      </div>
       
     </nav>
     <p class="notice"><%= notice %></p>
