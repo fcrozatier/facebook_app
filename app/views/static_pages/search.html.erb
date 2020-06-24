@@ -1,8 +1,15 @@
 <div class="container">
-  Friends found:
+<div class="bg-blue-100 w-2/5 mx-auto p-6">
+  <h2 class="text-lg pb-2">
+    <%= "#{@users.count} person".pluralize(@users.count) %> found:
+  </h2>
   <% @users.each do |user| %>
-    <p>
+    <div>
+    <p class="py-4 inline-block">
       <%= user.name %>
     </p>
+    <%= link_to 'Send Friend request', request_path(receiving_id: user.id, q: params[:q]), class:"btn-small inline-block float-right mt-2" %>
+    </div>
   <% end %>
+</div>
 </div>
