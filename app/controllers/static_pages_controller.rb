@@ -5,16 +5,13 @@ class StaticPagesController < ApplicationController
 
   def search
     @users = User.where("lower(name) like ?", "%#{params[:q].downcase}%").to_a
-    @results
-    @users.each do |user|
-      
-    end
+    @sent_requests_users_id = current_user.sent_requests.to_a.map { |r| r.receiver.id }
   end
 
   def create_friend_request
-    receiving = User.find(params[:receiving_id])
-    FriendRequest.create(sending: current_user, receiving: receiving)
-    flash[:notice] = "Friend Request sent to #{receiving.name} !" 
-    render :index
+    receiver = User.find(params[:receiver_id])
+    FriendRequest.create(sender: current_user, receiver: receiver)
+    flash[:notice] = "Friend Request sent to #{receiver.name} !" 
+    redirect_back(fallback_location: root_path)
   end
 end
