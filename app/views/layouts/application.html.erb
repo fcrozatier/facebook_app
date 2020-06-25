@@ -39,8 +39,10 @@
       </div>
       
     </nav>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <% if notice || alert %>
+      <p class="notice p-4 text-gray-800"><%= notice %></p>
+      <p class="alert p-4 text-gray-800"><%= alert %></p>
+    <% end %>
 
     <%= yield %>
   </body>
