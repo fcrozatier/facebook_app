@@ -1,0 +1,19 @@
+<div class="central_panel">
+  <h2 class="text-lg pb-2">
+    <%= "#{@new_notifications_count} new notification".pluralize(@new_notifications_count) %> found:
+  </h2>
+  <% @new_notifications.each do |n| %>
+    <div>
+    <p class="w-full p-4 my-1 inline-block border border-black">
+      new
+    </p>
+  <% end %>
+  <% @notifications.each do |n| %>
+    <div>
+    <p class="w-full p-4 my-1 inline-block">
+      old
+    </p>
+  <% end %>
+</div>
+
+
