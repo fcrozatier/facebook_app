@@ -6,12 +6,24 @@
   @apply bg-blue-600;
 }
 
+.btn-small-main {
+  @apply text-lg text-white font-bold rounded px-2 py-1;
+}
+
 .btn-small {
-  @apply bg-blue-400 text-lg text-white font-bold rounded px-2 py-1;
+  @apply btn-small-main bg-blue-400;
 }
 
 .btn-small:hover {
   @apply bg-blue-600;
+}
+
+.btn-small-alert {
+  @apply btn-small-main bg-red-400;
+}
+
+.btn-small-alert:hover {
+  @apply bg-red-600;
 }
 
 .btn {

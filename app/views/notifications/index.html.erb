@@ -2,18 +2,19 @@
   <h2 class="text-lg pb-2">
     <%= "#{@new_notifications_count} new notification".pluralize(@new_notifications_count) %> found:
   </h2>
-  <% @new_notifications.each do |n| %>
-    <div>
-    <p class="w-full p-4 my-1 inline-block border border-black">
-      new
-    </p>
-  <% end %>
   <% @notifications.each do |n| %>
-    <div>
-    <p class="w-full p-4 my-1 inline-block">
-      old
-    </p>
-  <% end %>
+    <div class="w-full p-4 my-1 inline-block <%= 'border border-black' if n.created_at >= @cutoff_date %>">
+      <p>
+        <%= n.who_full_name %> <%= n.display_msg %>
+      </p>
+      <div class="pt-2">
+      <% if n.family == "friend_request" %>
+        <%= link_to 'Accept Friend Request', root_path, class:"inline-block btn-small" %>
+        <%= link_to 'Dismiss Friend Request', root_path, class:"inline-block btn-small-alert " %>
+      <% end %>
+      </div>
+    </div>
+<% end %>
 </div>
 
 
