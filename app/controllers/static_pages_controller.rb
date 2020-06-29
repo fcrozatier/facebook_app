@@ -7,7 +7,7 @@ class StaticPagesController < ApplicationController
 
   def search
     @users = User.where("lower(name) like ?", "%#{params[:q].downcase}%").to_a
-    @sent_requests_users_id = current_user.sent_requests.to_a.map { |r| r.receiver.id }
+    @sent_requests_users_id = current_user.sent_friendships.to_a.map { |r| r.receiver.id }
   end
 
 end
