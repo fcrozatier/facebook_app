@@ -10,7 +10,7 @@
     <% if @sent_requests_users_id.include?(user.id) %>
       <p class="inline-block float-right mt-2"> Request sent!</p>
     <% else %>
-      <%= link_to 'Send Friend request', friend_request_path(receiver_id: user.id), class:"btn-small inline-block float-right mt-2" %>
+      <%= link_to 'Send Friend request', friend_requests_path(receiver_id: user.id), method: :post, class:"btn-small inline-block float-right mt-2" %>
     <% end %>
     </div>
   <% end %>

@@ -16,7 +16,7 @@
           <div class="relative">
           <% if current_user.new_notifications? %>
             <%= image_tag 'icons/notification_bell.png', alt:"Notifs", class:"inline-block mb-1 w-6" %>
-            <div class="absolute w-6 top-1 text-white text-sm text-center font-light ">4</div>
+            <div class="absolute w-6 top-1 text-white text-sm text-center font-light "><%= current_user.new_notifications_count %></div>
           <% else %>
             <%= image_tag 'icons/notifications.png', alt:"Notifs", class:"inline-block mb-1 w-6 opacity-25" %>
           <% end %>
