@@ -17,6 +17,14 @@ class User < ApplicationRecord
     (sent_friends + received_friends).uniq
   end
 
+  def friends_ids
+    (sent_friendships.where(status: "friend").pluck(:receiver_id) + received_friendships.where(status: "friend").pluck(:sender_id)).uniq
+  end
+
+  def friend_requester_ids
+    received_friendships.where(status: "friend_request").pluck(:sender_id)
+  end
+
   def new_notifications?
     notifications.where(viewed: false).count > 0
   end

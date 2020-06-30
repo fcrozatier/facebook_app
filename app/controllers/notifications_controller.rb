@@ -13,5 +13,4 @@ class NotificationsController < ApplicationController
       n.update(viewed: true)
     end
   end
-
 end
