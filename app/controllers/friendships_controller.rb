@@ -13,11 +13,13 @@ class FriendshipsController < ApplicationController
     f = Friendship.find(params[:id])
     f.update(status: "friend")
     f.notify
+    Notification.find(params[:n_id]).update(family: "friend")
     redirect_back(fallback_location: root_path)
   end
 
   def destroy
     Friendship.find(params[:id]).delete
+    Notification.find(params[:n_id]).update(family: "non_friend")
     redirect_back(fallback_location: root_path)
   end
 end
