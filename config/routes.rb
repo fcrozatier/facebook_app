@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
-  root 'static_pages#index'
+  root 'posts#index'
   get '/search', to: 'static_pages#search'
-  devise_for :users
+  devise_for :user
   resources :notifications, only: [:index]
   resources :friendships
-  # devise_scope :user do
-  #   # get "", to: 'devise/registrations#new'
-  # end
+  resources :posts
 end

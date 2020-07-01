@@ -1,0 +1,17 @@
+<div class="central_panel">
+  <%= form_for @new_post do |f| %>
+    <%= f.text_area :body, autofocus: true, class: "input h-20 autofocus" %>
+    <%= f.submit "Post", class: "btn-main" %>
+  <% end %>
+  <% @posts.each do |p| %>
+    <% if User.exists?(p.user_id) %>
+      <div class="w-full p-4 my-1 inline-block">
+        <p>
+          <%= p.user.name %>:<br>
+          <%= p.body %><br>
+          <small><%= time_ago_in_words(p.created_at) + " ago." %></small>
+        </p>
+      </div>
+    <% end %>
+  <% end %>
+</div>

@@ -13,16 +13,18 @@ class User < ApplicationRecord
   has_many :received_friendships, class_name: "Friendship", dependent: :destroy, inverse_of: :receiver, foreign_key: "receiver_id"
   has_many :received_friends, through: :received_friendships, source: :sender
 
-  def friends
-    (sent_friends + received_friends).uniq
-  end
+  has_many :posts
 
   def friends_ids
     (sent_friendships.where(status: "friend").pluck(:receiver_id) + received_friendships.where(status: "friend").pluck(:sender_id)).uniq
-  end
-
+  end  
+  
   def friend_requester_ids
     received_friendships.where(status: "friend_request").pluck(:sender_id)
+  end
+
+  def friends
+    (sent_friends + received_friends).uniq.filter { |u| !friend_requester_ids.include?(u.id) }
   end
 
   def new_notifications?
