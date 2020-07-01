@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get '/search', to: 'static_pages#search'
   devise_for :users
   resources :notifications, only: [:index]
-  resources :friendships, except: [:index]
+  resources :friendships
   # devise_scope :user do
   #   # get "", to: 'devise/registrations#new'
   # end

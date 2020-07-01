@@ -22,6 +22,14 @@
           <% end %>
           </div>
         <% end %>
+        <%= link_to friendships_path, class: "inline-block ml-6" do %>
+          <% if current_user.new_friend_request? %>
+            <%= image_tag 'icons/new_friend.png', alt:"Friendss", class:"inline-block mb-1 w-6" %>
+            <div class="absolute w-6 top-1 text-white text-xs text-center font-light "><%= current_user.new_friend_request_count %></div>
+          <% else %>
+            <%= image_tag 'icons/friend.png', alt:"Friends", class:"inline-block mb-1 w-6 opacity-25" %>
+          <% end %>
+        <% end %>
         <div class="inline-block ml-6">
           <%= form_with(url: "/search", method: :get, local: true ) do |f| %>
             <%= f.text_field :q, class: "px-2 py-1 inline-block" %>

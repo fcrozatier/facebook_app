@@ -32,4 +32,12 @@ class User < ApplicationRecord
   def new_notifications_count
     notifications.where(viewed: false).count
   end
+
+  def new_friend_request?
+    received_friendships.where(status: "friend_request").count > 0
+  end
+
+  def new_friend_request_count
+    received_friendships.where(status: "friend_request").count
+  end
 end
