@@ -4,5 +4,7 @@ Rails.application.routes.draw do
   devise_for :user
   resources :notifications, only: [:index]
   resources :friendships
-  resources :posts
+  resources :posts do 
+    resources :likes
+  end
 end

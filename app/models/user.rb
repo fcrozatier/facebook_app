@@ -14,6 +14,7 @@ class User < ApplicationRecord
   has_many :received_friends, through: :received_friendships, source: :sender
 
   has_many :posts
+  has_many :likes
 
   def friends_ids
     (sent_friendships.where(status: "friend").pluck(:receiver_id) + received_friendships.where(status: "friend").pluck(:sender_id)).uniq
@@ -27,6 +28,14 @@ class User < ApplicationRecord
     (sent_friends + received_friends).uniq.filter { |u| !friend_requester_ids.include?(u.id) }
   end
 
+  def new_friend_request?
+    received_friendships.where(status: "friend_request").count > 0
+  end
+
+  def new_friend_request_count
+    received_friendships.where(status: "friend_request").count
+  end
+
   def new_notifications?
     notifications.where(viewed: false).count > 0
   end
@@ -35,11 +44,11 @@ class User < ApplicationRecord
     notifications.where(viewed: false).count
   end
 
-  def new_friend_request?
-    received_friendships.where(status: "friend_request").count > 0
+  def likes_this?(post)
+    likes.where(post_id: post.id).any?
   end
 
-  def new_friend_request_count
-    received_friendships.where(status: "friend_request").count
+  def this_like_id(post)
+    likes.where(post_id: post.id).first.id
   end
 end
