@@ -8,6 +8,7 @@ class PostsController < ApplicationController
     end
 
     @new_post = current_user.posts.build
+    @new_commment = current_user.comments.build
   end
 
   def create

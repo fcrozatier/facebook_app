@@ -1,4 +1,5 @@
 <div class="central_panel">
+  <h2 class="text-xl mb-2">What's on your mind?</h2>
   <%= form_for @new_post do |f| %>
     <%= f.text_area :body, autofocus: true, class: "input h-20 autofocus" %>
     <%= f.submit "Post", class: "btn-main" %>
@@ -7,8 +8,7 @@
     <% if User.exists?(p.user_id) %>
       <div class="w-full p-4 my-1 inline-block">
         <p>
-          <%= p.user.name %>:<br>
-          <%= p.body %><br>
+          <strong><%= p.user.name %>:</strong> <%= p.body %><br>
           <small><%= time_ago_in_words(p.created_at) + " ago." %></small><br>
           <% if current_user.likes_this?(p) %>
             <%= link_to post_like_path(p, current_user.this_like_id(p)), method: :delete do %>
@@ -25,6 +25,10 @@
             </small>
           <% end %>
       </p>
+      <%= render 'comments', comments: p.comments.to_a  %>
+      <div class="mt-1">
+        <%= render 'comment_form', new_comment: @new_comment, p: p %>
+      </div>
     </div>
   <% end %>
 <% end %>

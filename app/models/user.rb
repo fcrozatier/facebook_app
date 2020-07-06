@@ -15,6 +15,7 @@ class User < ApplicationRecord
 
   has_many :posts
   has_many :likes
+  has_many :comments
 
   def friends_ids
     (sent_friendships.where(status: "friend").pluck(:receiver_id) + received_friendships.where(status: "friend").pluck(:sender_id)).uniq
