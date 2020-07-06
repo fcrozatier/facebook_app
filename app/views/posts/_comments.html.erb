@@ -1,8 +1,0 @@
-<% if comments.any? %>
-  <small><%= "#{comments.count} comment".pluralize(comments.count) %>:</small>
-  <% comments.each do |comment| %>
-    <p class="ml-6 text-sm">
-      <strong><%= comment.user.name %>:</strong> <%= comment.body %>
-    </p>
-  <% end %>
-<% end %>

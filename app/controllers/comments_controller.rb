@@ -1,9 +1,5 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
-  
-  def index
-
-  end
 
   def create
     current_user.comments.create(comment_params)

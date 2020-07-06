@@ -1,0 +1,9 @@
+<div class="central_panel">
+  <h2 class="text-xl mb-2">Your posts:</h2>
+  <% @posts.each do |p| %>
+    <div class="p-4">
+      <%= render '/posts/post', p: p %>
+      <%= render 'comments/list_comments', comments: p.comments  %>
+    </div>
+  <% end %>
+</div>

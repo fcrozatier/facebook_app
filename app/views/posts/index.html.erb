@@ -1,35 +1,15 @@
 <div class="central_panel">
   <h2 class="text-xl mb-2">What's on your mind?</h2>
-  <%= form_for @new_post do |f| %>
-    <%= f.text_area :body, autofocus: true, class: "input h-20 autofocus" %>
-    <%= f.submit "Post", class: "btn-main" %>
-  <% end %>
+  <%= render 'post_form' %>
   <% @posts.each do |p| %>
     <% if User.exists?(p.user_id) %>
-      <div class="w-full p-4 my-1 inline-block">
-        <p>
-          <strong><%= p.user.name %>:</strong> <%= p.body %><br>
-          <small><%= time_ago_in_words(p.created_at) + " ago." %></small><br>
-          <% if current_user.likes_this?(p) %>
-            <%= link_to post_like_path(p, current_user.this_like_id(p)), method: :delete do %>
-              <%= image_tag 'icons/you_like.png', alt:"Friendss", class:"inline-block w-6 mb-1" %>
-            <% end %>
-          <% else %>
-            <%= link_to post_likes_path(p), method: :post do %>
-              <%= image_tag 'icons/like.png', alt:"Friends", class:"inline-block w-6 mb-1 opacity-25" %>
-            <%  end %>
-          <% end %>
-          <% if p.likes.any? %>
-            <small><%= "#{p.likes.count} like".pluralize(p.likes.count) %>:
-              <%= p.likes.map { |l| l.user.name }.join(", ") %>
-            </small>
-          <% end %>
-      </p>
-      <%= render 'comments', comments: p.comments.to_a  %>
-      <div class="mt-1">
-        <%= render 'comment_form', new_comment: @new_comment, p: p %>
+      <div class="p-4">
+        <%= render 'post', p: p %>
+        <%= render 'comments/list_comments', comments: p.comments  %>
+        <div class="mt-1">
+          <%= render 'comments/form', new_comment: @new_comment, p: p %>
+        </div>
       </div>
-    </div>
+    <% end %>
   <% end %>
-<% end %>
 </div>
