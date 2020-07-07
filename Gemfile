@@ -34,6 +34,7 @@ gem 'devise'
 gem 'tailwindcss', '~> 1.0', '>= 1.0.3'
 gem 'purgecss_rails', '~> 0.7.0', require: false
 gem 'faker', '~> 2.12'
+gem "aws-sdk-s3", require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

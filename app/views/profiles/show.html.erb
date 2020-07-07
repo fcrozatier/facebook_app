@@ -1,11 +1,31 @@
   
 <div class="float-left p-6">
+
+  <div class="mb-4">
+  <h2 class="text-xl mb-2">Your profile picture:</h2>
+  <% if @profile && @profile.photo.attached? %>
+    <div class="mb-2">
+      <%= image_tag @profile.photo, size: "200x200" %>
+    </div>
+    <%= form_with model: @profile, url: profile_path, method: :patch do |f| %>
+      <%= f.file_field :photo, class:"mb-2" %><br>
+      <%= f.submit 'Update photo', class:"btn-small" %>
+    <% end %>
+  <% else %>
+    <%= form_with model: Profile.new, url: profile_path do |f| %>
+      <%= f.file_field :photo, class:"mb-2" %><br>
+      <%= f.submit 'Add photo', class:"btn-small" %>
+    <% end %>
+  <% end %>
+  </div>
+
   <h2 class="text-xl mb-2">Your profile info:</h2>
   <p class="mb-4">
     Name: <%= current_user.name %><br>
     Email: <%= current_user.email %><br>
     Age: <%= pluralize(current_user.age, "year") %> old<br>
   </p>
+
   <h2 class="text-xl mb-2">Your activity:</h2>
   <p>
     <%= pluralize(current_user.posts.count, "Post") %><br>
