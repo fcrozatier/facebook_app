@@ -1,0 +1,4 @@
+<%= form_with model: profile, url: user_profile_path(current_user.id) do |f| %>
+  <%= f.file_field :photo, class:"mb-2" %><br>
+  <%= f.submit 'Add photo', class:"btn-small" %>
+<% end %>

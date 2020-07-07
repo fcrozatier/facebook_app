@@ -7,7 +7,9 @@
     <p class="py-4 inline-block">
       <%= user.name %>
     </p>
-    <% unless @friends_ids.include?(user.id) %>  
+    <% if @friends_ids.include?(user.id) %>  
+      <%= link_to 'View profile', user_profile_path(user.id), class:"btn-small inline-block float-right mt-2" %>
+    <% else %>
       <% if @sent_requests_users_id.include?(user.id) %>
         <p class="inline-block float-right mt-2"> Request sent!</p>
       <% else %>

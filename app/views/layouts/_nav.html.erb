@@ -2,7 +2,7 @@
   <%= link_to 'Facebook', root_path, class:"inline-block text-2xl text-white font-bold" %>
   <% if user_signed_in? %>
     <%= link_to notifications_path, class: "inline-block ml-6" do %>
-      <div class="relative">
+      <div class="relative align-middle">
         <% if current_user.new_notifications? %>
           <%= image_tag 'icons/notification_bell.png', alt:"Notifs", class:"inline-block mb-1 w-6" %>
           <div class="absolute w-6 top-1 text-white text-xs text-center font-light "><%= current_user.new_notifications_count %></div>
@@ -28,13 +28,15 @@
 
     <div class="float-right inline-block">
       <div class="relative">
-        <%= link_to profile_path do %>
+        <%= link_to user_profile_path(current_user.id) do %>
+        <div class="h-12">
           <% if current_user.profile && current_user.profile.photo.attached? %>
-            <div class="inline-block mr-2 border-2 rounded-full overflow-hidden">
+            <div class="inline-block align-middle mr-2 border-2 rounded-full overflow-hidden">
               <%= image_tag current_user.profile.photo, size: "35x35" %>
             </div>
           <% end %>
-          <button class="inline-block align-text-bottom mt-2 pr-8 text-white"><%= current_user.name %></button>
+          <span class="align-middle pr-8 text-white"><%= current_user.name %></span>
+        </div>
         <% end %>
         <div class="absolute right-0 w-32 bg-white py-2 rounded shadow-lg">
           <%= link_to 'Edit Profile', edit_user_registration_path, class: "block py-2 pl-6 hover:bg-blue-500 hover:text-white" %>

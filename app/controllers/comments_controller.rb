@@ -1,6 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :authenticate_user!
-
+  
   def create
     current_user.comments.create(comment_params)
     redirect_back(fallback_location: root_path)
