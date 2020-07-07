@@ -1,6 +1,6 @@
 <div class="central_panel">
   <h2 class="text-lg pb-2">
-    <%= "#{@new_notifications_count} new notification".pluralize(@new_notifications_count) %> found:
+    <%= pluralize(@new_notifications_count, "new notification") %> found:
   </h2>
   <% @notifications.each do |n| %>
   <% if User.exists?(n.who) %>

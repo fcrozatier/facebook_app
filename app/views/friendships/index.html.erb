@@ -1,6 +1,6 @@
 <div class="central_panel">
   <h2 class="text-lg pb-2">
-    <%= "#{current_user.new_friend_request_count} friend request".pluralize(current_user.new_friend_request_count) %> found:
+    <%= pluralize(current_user.new_friend_request_count, "friend request") %> :
   </h2>
   <% @new_friend_requests.each do |f| %>
   <% if User.exists?(f.sender_id) %>

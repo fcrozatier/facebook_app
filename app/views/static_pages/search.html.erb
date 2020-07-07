@@ -1,6 +1,6 @@
 <div class="central_panel">
   <h2 class="text-lg pb-2">
-    <%= "#{@users.count} person".pluralize(@users.count) %> found:
+    <%= pluralize(@users.count, "person") %> found:
   </h2>
   <% @users.each do |user| %>
     <div>

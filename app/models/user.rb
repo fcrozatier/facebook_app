@@ -17,6 +17,8 @@ class User < ApplicationRecord
   has_many :likes
   has_many :comments
 
+  has_one :profile
+
   def friends_ids
     (sent_friendships.where(status: "friend").pluck(:receiver_id) + received_friendships.where(status: "friend").pluck(:sender_id)).uniq
   end  
@@ -51,5 +53,11 @@ class User < ApplicationRecord
 
   def this_like_id(post)
     likes.where(post_id: post.id).first.id
+  end
+
+  def age
+    dob = birthdate
+    now = Time.now.utc.to_date
+    now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
   end
 end

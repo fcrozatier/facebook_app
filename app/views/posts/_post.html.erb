@@ -11,7 +11,7 @@
     <%  end %>
   <% end %>
   <% if p.likes.any? %>
-    <small><%= "#{p.likes.count} like".pluralize(p.likes.count) %>:
+    <small><%= pluralize(p.likes.count, "like") %>:
       <%= p.likes.map { |l| l.user.name }.join(", ") %>
     </small>
   <% end %>
