@@ -5,7 +5,7 @@ class Friendship < ApplicationRecord
   def notify
     if status == "friend"
       message = "accepted your friend request!"
-      sender.notifications.create(family: "message", message: message, what: id, who: receiver_id)
+      sender.notifications.create(family: "friend_request_accepted", message: message, what: id, who: receiver_id)
     end
   end
 end

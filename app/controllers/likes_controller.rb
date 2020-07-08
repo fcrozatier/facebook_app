@@ -2,6 +2,7 @@ class LikesController < ApplicationController
 
   def create
     current_user.likes.create(post_id: params[:post_id])
+    Post.find(params[:post_id]).user.notifications.create(family: "like", what: params[:post_id], who: current_user.id)
     redirect_back(fallback_location: root_path)
   end
 
@@ -10,9 +11,4 @@ class LikesController < ApplicationController
     redirect_back(fallback_location: root_path)
   end
   
-  private
-
-  def likes_params
-    params.require(:post_id).permit(:post_id)
-  end
 end

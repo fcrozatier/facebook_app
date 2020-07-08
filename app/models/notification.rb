@@ -1,7 +1,8 @@
 class Notification < ApplicationRecord
   belongs_to :user
 
-  MSG = { "friend_request" => "sent you a friend request!" } 
+  MSG = { "friend_request_accepted" => "accepted your friend request!",
+    "like" => "likes your post!", "comment" => "commented your post!"} 
 
   def display_msg
     MSG[self.family]
