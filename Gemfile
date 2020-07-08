@@ -36,6 +36,10 @@ gem 'purgecss_rails', '~> 0.7.0', require: false
 gem 'faker', '~> 2.12'
 gem "aws-sdk-s3", require: false
 gem 'image_processing'
+gem 'omniauth', '~> 1.9', '>= 1.9.1'
+gem 'omniauth-google-oauth2', '~> 0.8.0'
+gem 'activerecord-session_store', '~> 1.1', '>= 1.1.3'
+gem 'figaro', '~> 1.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

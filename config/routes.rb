@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'posts#index'
   get '/search', to: 'static_pages#search'
   
-  devise_for :user, controllers: { registrations: 'users/registrations' }
+  devise_for :user, controllers: { registrations: 'users/registrations', omniauth_callbacks: 'users/omniauth_callbacks' }
   
   resources :users, only: [] do
     resource :profile, only: [:create, :update, :show]
