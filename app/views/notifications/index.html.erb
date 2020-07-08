@@ -9,12 +9,6 @@
         <%= n.who_full_name %> <%= n.message %><br/>
         <small><%= time_ago_in_words(n.created_at) + " ago." %></small> 
       </p>
-      <% if n.family == "friend_request" %>
-      <div class="pt-2">
-        <%= link_to 'Accept Friend Request', friendship_path(n.what, n_id: n.id), method: :patch, class:"inline-block btn-small" %>
-        <%= link_to 'Dismiss Friend Request', friendship_path(n.what, n_id: n.id), method: :delete, class:"inline-block btn-small-alert " %>
-      </div>
-      <% end %>
     </div>
   <% end %>
   <% end %>
