@@ -1,9 +1,9 @@
 class PostsController < ApplicationController
 
   def index
-    @posts = current_user.posts.where("created_at < ?", DateTime.now )
+    @posts = current_user.posts.where("created_at < ?", DateTime.now ).order(created_at: :asc)
     current_user.friends.each do |friend|
-      @posts += friend.posts.where("created_at < ?", DateTime.now )
+      @posts += friend.posts.where("created_at < ?", DateTime.now ).order(created_at: :asc)
     end
 
     @new_post = current_user.posts.build

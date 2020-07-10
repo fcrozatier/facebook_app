@@ -1,5 +1,5 @@
 <div>
-  <strong><%= p.user.name %>:</strong> <%= p.body %><br>
+  <strong><%= link_to p.user.name, user_profile_path(p.user.id) %>:</strong> <%= p.body %><br>
   <small><%= time_ago_in_words(p.created_at) + " ago." %></small><br>
   <% if current_user.likes_this?(p) %>
     <%= link_to post_like_path(p, current_user.this_like_id(p)), method: :delete do %>

@@ -3,7 +3,7 @@
     <small><%= pluralize(comments.count, "comment") %>:</small>
     <% comments.each do |comment| %>
       <p class="ml-6 text-sm">
-        <strong><%= comment.user.name %>:</strong> <%= comment.body %>
+        <strong><%= link_to comment.user.name, user_profile_path(comment.user.id) %>:</strong> <%= comment.body %>
       </p>
     <% end %>
   <% end %>

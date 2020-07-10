@@ -8,16 +8,16 @@ class User < ApplicationRecord
 
   validates :name, :birthdate, :gender, presence: true
 
-  has_many :notifications
+  has_many :notifications, dependent: :destroy
   
   has_many :sent_friendships, class_name: "Friendship", dependent: :destroy, inverse_of: :sender, foreign_key: "sender_id"
   has_many :sent_friends, through: :sent_friendships, source: :receiver
   has_many :received_friendships, class_name: "Friendship", dependent: :destroy, inverse_of: :receiver, foreign_key: "receiver_id"
   has_many :received_friends, through: :received_friendships, source: :sender
 
-  has_many :posts
-  has_many :likes
-  has_many :comments
+  has_many :posts, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   has_one :profile
 

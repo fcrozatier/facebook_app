@@ -6,7 +6,7 @@
   <% if User.exists?(n.who) %>
     <div class="w-full p-4 my-1 inline-block <%= 'border border-black' if n.created_at >= @cutoff_date %>">
       <p>
-        <%= n.who_full_name %> <%= n.display_msg %><br/>
+        <%= link_to n.who_full_name, user_profile_path(n.who) %> <%= n.display_msg %><br/>
         <small><%= time_ago_in_words(n.created_at) + " ago." %></small> 
       </p>
     </div>
