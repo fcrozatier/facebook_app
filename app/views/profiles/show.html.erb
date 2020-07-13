@@ -1,4 +1,4 @@
-<div class="float-left p-6">
+<div class="p-6 mx-auto sm:w-1/5 sm:float-left md:w-1/4 lg:w-2/5">
 
   <h2 class="text-xl mb-2"><%= @user.name %></h2>
 
@@ -28,7 +28,7 @@
   </p>
 </div>
 
-<div class="central_panel">
+<div class="central_panel w-4/5 sm:w-3/5 md:w-1/2 lg:w-2/5">
   <h2 class="text-xl mb-2">Posts:</h2>
   <% @posts.each do |p| %>
     <div class="p-4">

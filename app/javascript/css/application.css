@@ -8,7 +8,7 @@
 }
 
 .central_panel {
-  @apply bg-blue-100 w-2/5 mx-auto p-6;
+  @apply bg-blue-100 mx-auto p-6;
 }
 
 .title {
