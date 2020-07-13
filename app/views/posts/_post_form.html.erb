@@ -1,4 +1,5 @@
 <%= form_for @new_post do |f| %>
   <%= f.text_area :body, autofocus: true, class: "input h-20 autofocus" %>
   <%= f.submit "Post", class: "btn-main" %>
+  <%= f.file_field :photo, class:"" %>
 <% end %>

@@ -1,6 +1,11 @@
 <div>
   <strong><%= link_to p.user.name, user_profile_path(p.user.id) %>:</strong> <%= p.body %><br>
   <small><%= time_ago_in_words(p.created_at) + " ago." %></small><br>
+  <% if p.photo.attached? %>
+    <div class="mb-2">
+        <%= image_tag p.optimized_photo(200,200) %>
+    </div>
+  <% end %>
   <% if current_user.likes_this?(p) %>
     <%= link_to post_like_path(p, current_user.this_like_id(p)), method: :delete do %>
       <%= image_tag 'icons/you_like.png', alt:"Friendss", class:"inline-block w-6 mb-1" %>
