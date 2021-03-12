@@ -38,7 +38,7 @@ gem "aws-sdk-s3", require: false
 gem 'image_processing'
 gem 'omniauth', '~> 1.9', '>= 1.9.1'
 gem 'omniauth-google-oauth2', '~> 0.8.0'
-gem 'activerecord-session_store', '~> 1.1', '>= 1.1.3'
+gem 'activerecord-session_store', '~> 2.0'
 gem 'sendgrid-ruby'
 
 group :development, :test do
