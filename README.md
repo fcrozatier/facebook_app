@@ -1,5 +1,7 @@
 # Facebook App
 
+This is a Ruby on Rails project live at https://afternoon-taiga-51893.herokuapp.com/
+
 Features:
 
 * People must sign in to see anything except the sign-in page
