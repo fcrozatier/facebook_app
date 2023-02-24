@@ -36,7 +36,7 @@ gem 'purgecss_rails', '~> 0.7.0', require: false
 gem 'faker', '~> 2.12'
 gem "aws-sdk-s3", require: false
 gem 'image_processing'
-gem 'omniauth', '~> 1.9', '>= 1.9.1'
+gem 'omniauth', '~> 2.0'
 gem 'omniauth-google-oauth2', '~> 0.8.0'
 gem 'activerecord-session_store', '~> 2.0'
 gem 'sendgrid-ruby'
